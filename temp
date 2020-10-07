@@ -1,0 +1,47 @@
+Node current = head;
+int size = 1;
+current.lock.lock();
+Node next = current.next;
+try {
+    while (true){
+        next.lock.lock();
+        size++;
+        try{
+            if (next == tail){
+                return size;
+            }
+        }
+        finally{
+            current.lock.unlock();
+        }
+        current = next;
+        next = current.next;  
+    }
+}
+finally{
+    next.lock.unlock();
+}
+
+Node current = head;
+int size = 1;
+current.lock.lock();
+Node next = current.next;
+try {
+    while (true){
+        next.lock.lock();
+        size++;
+        try{
+            if (next == tail){
+                return size;
+            }
+        }
+        finally{
+            current.lock.unlock();
+        }
+        current = next;
+        next = current.next;  
+    }
+}
+finally{
+    next.lock.unlock();
+}
